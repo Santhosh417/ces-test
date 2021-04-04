@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 
 
-class CES_ATS_SEARCH(unittest.TestCase):
+class CES_ATS_DOWNLOAD(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
 
@@ -31,9 +31,9 @@ class CES_ATS_SEARCH(unittest.TestCase):
             #click on search
             elem= driver.find_element_by_xpath("/html/body/div/div[2]/div[1]/div/div[2]/div[2]/a").click()
             time.sleep(3)
-            #validate stduent profile page by using the download study plan button
+            #validate stduent profile page by the download study plan button and click on button
             elem= driver.find_element_by_xpath("/html/body/div/div[2]/div[2]/div/div/button")
-            #elem = driver.find_element_by_xpath("/html/body/div/div[2]/div[2]/div/div/button").click()
+            elem = driver.find_element_by_xpath("/html/body/div/div[2]/div[2]/div/div/button").click()
             time.sleep(3)
             #code for logout
             # click on username on the right side of screen
@@ -43,6 +43,9 @@ class CES_ATS_SEARCH(unittest.TestCase):
             # select dropdown for logout
             elem= driver.find_element_by_link_text("Log out").click()
             #elem= driver.find_element_by_xpath("/html/body/div/div[1]/div/div/div[3]/div/ul/li/a").click()
+
+            #verify if we are on home page
+            #elem= driver.find_element_by_xpath("/html/body/div/div[3]/div/p") #verifies successful logout using xpath
             time.sleep(3)
             assert True
 
