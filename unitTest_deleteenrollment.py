@@ -2,6 +2,7 @@ import unittest
 import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -34,8 +35,11 @@ class CES_ATS_ADDENROLL(unittest.TestCase):
 
             #click on delete for a course
             elem =driver.find_element_by_xpath("/html/body/div/div[2]/div[2]/div[2]/div/table/tbody/tr[2]/td[7]/button[2]").click()
-            #elem =driver.find_element_by_link_text("Delete").click()
-
+            # elem =driver.find_element_by_link_text("Delete").click()
+            obj = driver.switch_to.alert
+            time.sleep(3)
+            obj.accept()
+            time.sleep(3)
 
             #code for logout
             # click on username on the right side of screen
