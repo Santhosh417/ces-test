@@ -12,9 +12,9 @@ class CES_ATS_COURSE(unittest.TestCase):
     def test_ces(self):
         driver = self.driver
         driver.maximize_window()
-        #driver.get("http://localhost:8080")
-        driver.get("https://ces-service.herokuapp.com/admin/")
-        time.sleep(5)
+        #driver.get("http://127.0.0.1:8000/popcorn/")
+        driver.get("https://ces-service.herokuapp.com/popcorn/")
+        time.sleep(3)
         elem = driver.find_element_by_id("id_username")
         elem.send_keys("admin")
         time.sleep(2)
@@ -78,8 +78,7 @@ class CES_ATS_COURSE(unittest.TestCase):
 
 
 def tearDown(self):
-    #self.driver.close()
-    self.driver.quit()
+    self.driver.close()
 
 
 if __name__ == '__main__':

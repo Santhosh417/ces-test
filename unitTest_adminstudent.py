@@ -12,9 +12,9 @@ class CES_ATS_STUDENT(unittest.TestCase):
     def test_ces(self):
         driver = self.driver
         driver.maximize_window()
-        #driver.get("http://localhost:8080")
+        #driver.get("http://127.0.0.1:8000/popcorn/")
         driver.get("https://ces-service.herokuapp.com/popcorn/")
-        time.sleep(5)
+        time.sleep(3)
         elem = driver.find_element_by_id("id_username")
         elem.send_keys("admin")
         time.sleep(2)
@@ -36,7 +36,7 @@ class CES_ATS_STUDENT(unittest.TestCase):
             time.sleep(2)
             # id_nuid
             elem = driver.find_element_by_id("id_nuid")
-            elem.send_keys("12341234")
+            elem.send_keys("119089")
             time.sleep(2)
             # id_email
             elem = driver.find_element_by_id("id_email")
@@ -63,17 +63,12 @@ class CES_ATS_STUDENT(unittest.TestCase):
             # delete
             elem = driver.find_element_by_link_text("Automate Test1").click()
             time.sleep(3)
-            # elem = driver.find_element_by_xpath("/html/body/div/div[3]/div/div/form/div[2]/table/tbody/tr/th/a").click()#select the student to delete
-            # time.sleep(3)
-            elem = driver.find_element_by_xpath("/html/body/div[1]/div[3]/h1")# Verify change student page
-            time.sleep(3)
-            elem = driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/form/div/div/p/a").click()# delete student
-            time.sleep(3)
-            elem = driver.find_element_by_xpath("/html/body/div/div[3]/h1")# verify the delete confirmation page
+            elem = driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/form/div/div/p/a").click() # delete student
             # confirmation page- click on yes i am sure
-            elem = driver.find_element_by_xpath("/html/body/div/div[3]/form/div/input[2]").click()
+            elem = driver.find_element_by_xpath("/html/body/div/div[3]/h1") # ensure the delete confirmation page
+            time.sleep(1)
+            elem = driver.find_element_by_xpath("/html/body/div/div[3]/form/div/input[2]").click() # Confirm to delete the student
             time.sleep(3)
-
 
             assert True
 
@@ -83,9 +78,8 @@ class CES_ATS_STUDENT(unittest.TestCase):
 
         time.sleep(3)
 
-        def tearDown(self):
-            # self.driver.close()
-            self.driver.quit()
+def tearDown(self):
+    self.driver.close()
 
-        if __name__ == '__main__':
-            unittest.main()
+if __name__ == '__main__':
+    unittest.main()

@@ -12,7 +12,7 @@ class CES_ATS_LOGIN(unittest.TestCase):
     def test_ces(self):
         driver = self.driver
         driver.maximize_window()
-        #driver.get("http://localhost:8080")
+        #driver.get("http://localhost:8081")
         driver.get("https://jolly-shockley-7553c8.netlify.app/")
         time.sleep(5)
         elem = driver.find_element_by_link_text("Login").click()
@@ -32,6 +32,14 @@ class CES_ATS_LOGIN(unittest.TestCase):
             elem = driver.find_element_by_link_text("About us").click()
             elem = driver.find_element_by_tag_name('h3')
             time.sleep(3)
+            elem = driver.find_element_by_link_text("Alumni")
+            elem = driver.find_element_by_link_text("Alumni").click()
+            elem = driver.find_element_by_xpath('/html/body/div/div[2]/div[1]/div/h1/b')
+            time.sleep(3)
+            elem = driver.find_element_by_link_text("Contact Us")
+            elem = driver.find_element_by_link_text("Contact Us").click()
+            elem = driver.find_element_by_xpath('/html/body/div/div[2]/h6')
+            time.sleep(3)
 
             #code for logout
             # click on username on the right side of screen
@@ -40,10 +48,6 @@ class CES_ATS_LOGIN(unittest.TestCase):
             time.sleep(3)
             # select dropdown for logout
             elem= driver.find_element_by_link_text("Log out").click()
-            #elem= driver.find_element_by_xpath("/html/body/div/div[1]/div/div/div[3]/div/ul/li/a").click()
-
-            #verify if we are on home page
-            #elem= driver.find_element_by_xpath("/html/body/div/div[3]/div/p") #verifies successful logout using xpath
             time.sleep(3)
             assert True
 
